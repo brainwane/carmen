@@ -1,25 +1,26 @@
 #!/usr/bin/python
 import math
-import json
 import sys
 
-f = open(r'cities.json')
-# print places.read()
-
-places = json.load(f)
+cities = {
+        "0": "city of Butte",
+        "1": "Fort Laramie",
+        "2": "South Pass",
+        "3": "Chimney Rock"
+        }
 
 choice = raw_input('Choose a number from 1 to 4: ')
 
 def choosepath(path):
     path = choice
     if path == '1':
-        return places[0]
+        return cities['0']
     if path == '2':
-        return places[1]
+        return cities['1']
     if path == '3':
-        return "you chose 3"
+        return cities['2']
     if path == '4':
-        return "you chose 4, that is weird"
+        return cities['3']
     else:
         return "hey, you did not follow the rules"
 
