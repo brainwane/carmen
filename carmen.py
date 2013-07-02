@@ -23,7 +23,7 @@ trails = {
 
 currentcity = "Fort Laramie"
 
-carmencity = cities[str(random.randrange(1,2))]
+carmencity = cities[str(random.randrange(1,len(cities)))]
 
 username = raw_input('What is your name? ')
 
