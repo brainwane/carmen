@@ -4,11 +4,10 @@ import sys
 import random
 
 cities = {
-        "0": "Fort Laramie, Wyoming",
-        "1": "South Pass, Wyoming",
-        "2": "Virginia City, Montana",
-        "3": "Fort Hall, Idaho",
-        "4": "Salt Lake City, Utah"
+        "1": "Virginia City, Montana",
+        "2": "South Pass, Wyoming",
+#        "3": "Fort Hall, Idaho",
+#        "4": "Salt Lake City, Utah"
         }
 
 # time to construct the "tree" of possibilities as a dictionary of lists
@@ -24,33 +23,27 @@ trails = {
 
 currentcity = "Fort Laramie"
 
-carmencity = cities[str(random.randrange(0,4))]
+carmencity = cities[str(random.randrange(1,2))]
 
 username = raw_input('What is your name? ')
 
-print "You are in " + currentcity
+print "You are in " + currentcity + ", and you can go to Virginia City, Montana, or South Pass, Wyoming."
 
-choice = raw_input('Carmen Sandiego has gone rogue! To find her lair, choose a number from 1 to 4: ')
+choice = raw_input('Carmen Sandiego has gone rogue! Which way to go? North (N) or west (W)? ')
 
-carmenis = "You follow Carmen to "
+followher = "You follow Carmen to "
 
 def choosepath(path):
     path = choice
     global currentcity
-    if path == '1':
-        currentcity = cities['0']
-        return carmenis + currentcity
-    if path == '2':
+    if path == 'N':
         currentcity = cities['1']
-        return carmenis + currentcity
-    if path == '3':
+        return followher + currentcity
+    if path == 'W':
         currentcity = cities['2']
-        return carmenis + currentcity
-    if path == '4':
-        currentcity = cities['3']
-        return carmenis + currentcity
+        return followher + currentcity
     else:
-        return "hey, you did not follow the rules, " + username + ", so you stay in " + currentcity
+        return "That doesn't make sense, " + username + ", so you stay in " + currentcity + "."
 
 print choosepath(choice)
 
