@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import math
 import sys
+import random
 
 cities = {
         "0": "Fort Laramie, Wyoming",
@@ -22,6 +23,8 @@ trails = {
     }
 
 currentcity = "Fort Laramie"
+
+carmencity = cities[str(random.randrange(0,4))]
 
 username = raw_input('What is your name? ')
 
@@ -51,3 +54,5 @@ def choosepath(path):
 
 print choosepath(choice)
 
+if currentcity == carmencity:
+    print "you win!"
