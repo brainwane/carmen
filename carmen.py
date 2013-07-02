@@ -3,13 +3,25 @@ import math
 import sys
 
 cities = {
-        "0": "city of Butte",
-        "1": "Fort Laramie",
-        "2": "South Pass",
-        "3": "Chimney Rock"
+        "0": "Fort Laramie, Wyoming",
+        "1": "South Pass, Wyoming",
+        "2": "Virginia City, Montana",
+        "3": "Fort Hall, Idaho",
+        "4": "Salt Lake City, Utah"
         }
 
-currentcity = "Independence"
+# time to construct the "tree" of possibilities as a dictionary of lists
+
+trails = { 
+    "Bozeman trail" : ["Fort Laramie", "Virginia City"],
+    "Usual trail" : ["South Pass", {
+        "Mormon trail" : ["Salt Lake City" , "Fort Hall"],
+        "Gentile trail" : "Fort Hall"
+        },
+        "Portland"]
+    }
+
+currentcity = "Fort Laramie"
 
 username = raw_input('What is your name? ')
 
@@ -21,6 +33,7 @@ carmenis = "You follow Carmen to "
 
 def choosepath(path):
     path = choice
+    global currentcity
     if path == '1':
         currentcity = cities['0']
         return carmenis + currentcity
@@ -37,3 +50,4 @@ def choosepath(path):
         return "hey, you did not follow the rules, " + username + ", so you stay in " + currentcity
 
 print choosepath(choice)
+
