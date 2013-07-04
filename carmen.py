@@ -33,26 +33,33 @@ followher = "You follow Carmen to "
 
 player.name = raw_input('What is your name? ')
 
-print [x.name for x in player.location.dests]
+print carmen.name + " has stolen a wagon tongue and we must catch her! You are in " + player.location.name + " and your choices are:"
 
-print carmen.name + " has stolen a wagon tongue and we must catch her! Your choices are:"
-for i,x in enumerate(player.location.dests):
-    print x.name + " is choice #" + str(i+1)
+def where2go():
+    for i,x in enumerate(player.location.dests):
+        print str(i+1) + ". "+ x.name
+
+print where2go()
 
 choice = raw_input('Which way to go? ')
 
-def firstchoice(path):
-    path = int(path)
+def choose(path):
+    if type(path) != int:
+        return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
     if path not in range(1, (len(player.location.dests)+1)):
         return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
     else:
         player.location = player.location.dests[path-1]
         return followher + player.location.name
 
-print firstchoice(choice)
+print choose(choice)
 
 if player.location == carmen.location:
     print "you win!"
 
-print "You are now in " + player.location.name
+print player.name + ", you are now in " + player.location.name + " and you can head to:"
+print where2go()
 
+choice = raw_input('OK, now which way? ')
+
+print choose(choice)
