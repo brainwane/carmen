@@ -4,12 +4,17 @@ import sys
 import random
 
 class City(object):
-    def __init__(self, name):
+    def __init__(self, name, clue):
         self.dests = ()
         self.name = name
+        self.clue = clue
 
-ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie"), City("Virginia City"), City("South Pass"), City("Salt Lake City"), 
-                             City("Fort Hall"), City("Portland"))
+ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "Matthew Shepard"),
+                             City("Virginia City", "a city in Montana named after an eastern State"),
+                             City("South Pass", "a town named South you have to go north to get to"),
+                             City("Salt Lake City", "Brigham Young"), 
+                             City("Fort Hall", "Hilary Mantel"),
+                             City("Portland", "the home of Open Source Bridge"))
 
 ftl.dests = (vc, sp)
 vc.dests = ()
@@ -18,21 +23,21 @@ slc.dests = (fh,)
 fh.dests = (pdx,)
 
 currentcity = ftl
-
 # I'll be randomizing which city Carmen is in later; the "cities" dict no longer exists.
 # carmencity = cities[str(random.randrange(1,len(cities)))]
 
 carmencity = pdx
 
+
+followher = "You follow Carmen to "
+
 username = raw_input('What is your name? ')
 
-print "You are in " + currentcity.name + ", and you can go to Virginia City, Montana, or South Pass, Wyoming."
+print "You are in " + currentcity.name + ", and your possible destinations are: " + [x.name for x in currentcity.dests]
 
 print "Carmen Sandiego has stolen a wagon tongue and we must catch her!"
 
 choice = raw_input('Which way to go? South Pass (SP) or Virginia City (VC)? ')
-
-followher = "You follow Carmen to "
 
 def firstchoice(path):
     path = choice
