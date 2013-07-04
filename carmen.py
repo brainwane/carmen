@@ -33,37 +33,27 @@ followher = "You follow Carmen to "
 
 username = raw_input('What is your name? ')
 
-print "You are in " + currentcity.name + ", and your possible destinations are: " + [x.name for x in currentcity.dests]
+print "You are in " + currentcity.name + ", and your possible destinations are:"
+print [x.name for x in currentcity.dests]
 
 print "Carmen Sandiego has stolen a wagon tongue and we must catch her!"
 
-choice = raw_input('Which way to go? South Pass (SP) or Virginia City (VC)? ')
+choice = raw_input('Which way to go? ')
+#  + [x for x in currentcity.dests]
 
 def firstchoice(path):
     path = choice
     global currentcity
-    if path == 'VC':
-        currentcity = "Virginia City"
-        return followher + currentcity.name
-    if path == 'SP':
-        currentcity = "South Pass"
-        return followher + currentcity.name
-    else:
+    if path not in currentcity.dests:
         return "That doesn't make sense, " + username + ", so you stay in " + currentcity.name + "."
+    else:
+        currentcity = path
+        return followher + currentcity.name
 
 print firstchoice(choice)
 
 if currentcity == carmencity:
     print "you win!"
-
-if currentcity == trails[0][1]:
-    print "You are on the Bozeman trail. Wrong turn! No sign of Carmen here; time to head back."
-    secondchance = raw_input('Which way to go? South Pass (SP) or Virginia City (VC)? ')
-    firstchoice(secondchance)
-    print firstchoice(secondchance)
-
-# if currentcity == trails[1][1]:
-#    print "You are on the right track! From here, the Mormon trail or the Gentile trail?"
 
 
 # def chooseatrail(thecity, listoftrails):
