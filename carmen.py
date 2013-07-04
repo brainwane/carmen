@@ -29,7 +29,7 @@ username = raw_input('What is your name? ')
 
 print "You are in " + currentcity + ", and you can go to Virginia City, Montana, or South Pass, Wyoming."
 
-choice = raw_input('Carmen Sandiego has gone rogue! Which way to go? North (N) or west (W)? ')
+choice = raw_input('Carmen Sandiego has stolen three wagon tongues and we must catch her! Which way to go? North (N) or west (W)? ')
 
 followher = "You follow Carmen to "
 
