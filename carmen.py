@@ -28,7 +28,6 @@ currentcity = ftl
 
 carmencity = pdx
 
-
 followher = "You follow Carmen to "
 
 username = raw_input('What is your name? ')
@@ -37,16 +36,18 @@ print "You are in " + currentcity.name + ", and your possible destinations are:"
 print [x.name for x in currentcity.dests]
 
 print "Carmen Sandiego has stolen a wagon tongue and we must catch her!"
+for i,x in enumerate(currentcity.dests):
+    print x.name + " is choice #" + str(i+1)
 
 choice = raw_input('Which way to go? ')
-#  + [x for x in currentcity.dests]
 
 def firstchoice(path):
-    path = choice
-    global currentcity
-    if path not in currentcity.dests:
+    path = int(path)
+    if path not in range(1, (len(currentcity.dests)+1)):
         return "That doesn't make sense, " + username + ", so you stay in " + currentcity.name + "."
     else:
+        global currentcity
+        path = currentcity.dests[path]
         currentcity = path
         return followher + currentcity.name
 
@@ -55,6 +56,7 @@ print firstchoice(choice)
 if currentcity == carmencity:
     print "you win!"
 
+print "You are now in " + currentcity.name
 
 # def chooseatrail(thecity, listoftrails):
 #    for item in listoftrails:
