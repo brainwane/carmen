@@ -3,26 +3,30 @@ import math
 import sys
 import random
 
-
-# __ metaclass __ = type # the book told me to do this - maybe it was wrong
-
-class City:
-    def __init__(self):
+class City(object):
+    def __init__(self, name):
         self.dests = ()
+        self.name = name
 
+ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie"), City("Virginia City"), City("South Pass"), City("Salt Lake City"), 
+                             City("Fort Hall"), City("Portland"))
 
-# the "tree" of possibilities was a list of lists: (("Fort Laramie", "Virginia City"), ("Fort Laramie", "South Pass", "Salt Lake City", "Fort Hall"), "Portland")
+ftl.dests = (vc, sp)
+vc.dests = ()
+sp.dests = (slc, fh)
+slc.dests = (fh,)
+fh.dests = (pdx,)
 
-currentcity = "Fort Laramie"
+currentcity = ftl
 
 # I'll be randomizing which city Carmen is in later; the "cities" dict no longer exists.
 # carmencity = cities[str(random.randrange(1,len(cities)))]
 
-carmencity = "Portland"
+carmencity = pdx
 
 username = raw_input('What is your name? ')
 
-print "You are in " + currentcity + ", and you can go to Virginia City, Montana, or South Pass, Wyoming."
+print "You are in " + currentcity.name + ", and you can go to Virginia City, Montana, or South Pass, Wyoming."
 
 print "Carmen Sandiego has stolen a wagon tongue and we must catch her!"
 
@@ -35,12 +39,12 @@ def firstchoice(path):
     global currentcity
     if path == 'VC':
         currentcity = "Virginia City"
-        return followher + currentcity
+        return followher + currentcity.name
     if path == 'SP':
         currentcity = "South Pass"
-        return followher + currentcity
+        return followher + currentcity.name
     else:
-        return "That doesn't make sense, " + username + ", so you stay in " + currentcity + "."
+        return "That doesn't make sense, " + username + ", so you stay in " + currentcity.name + "."
 
 print firstchoice(choice)
 
@@ -53,12 +57,12 @@ if currentcity == trails[0][1]:
     firstchoice(secondchance)
     print firstchoice(secondchance)
 
-if currentcity == trails[1][1]:
-    print "You are on the right track! From here, the Mormon trail or the Gentile trail?"
+# if currentcity == trails[1][1]:
+#    print "You are on the right track! From here, the Mormon trail or the Gentile trail?"
 
 
-def chooseatrail(thecity, listoftrails):
-    for item in listoftrails:
-        if thecity == item:
-            return listoftrails.index(city)
+# def chooseatrail(thecity, listoftrails):
+#    for item in listoftrails:
+#        if thecity == item:
+#            return listoftrails.index(city)
 

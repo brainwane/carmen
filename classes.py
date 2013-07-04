@@ -3,27 +3,26 @@ import math
 import sys
 import random
 
-slugs = {
-    ftl : "Fort Laramie",
-    vc : "Virginia City",
-    sp : "South Pass",
-    slc : "Salt Lake City",
-    fh : "Fort Hall",
-    pdx : "Portland"
-    }
-
-# (("Fort Laramie", "Virginia City"), ("Fort Laramie", "South Pass", "Salt Lake City", "Fort Hall"), "Portland")
-
-
 class City:
-    def __init__(self):
+    def __init__(self, name):
         self.dests = ()
+        self.name = name
 
-ftl, vc, sp, slc, fh = (City(), City(), City(), City(), City())
 
+
+ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie"), City("Virginia City"), City("South Pass"), City("Salt Lake City"), 
+                             City("Fort Hall"), City("Portland"))
 
 ftl.dests = (vc, sp)
-vc.dests = (vc, sp)
-sp.dests = (vc, sp)
-slc.dests = (vc, sp)
-fh.dests = (vc, sp)
+vc.dests = ()
+sp.dests = (slc, fh)
+slc.dests = (fh,)
+fh.dests = (pdx,)
+
+
+
+print [x.name for x in ftl.dests]
+print [x.name for x in vc.dests]
+print [x.name for x in sp.dests]
+print [x.name for x in slc.dests]
+print [x.name for x in fh.dests]
