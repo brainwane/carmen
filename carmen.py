@@ -56,8 +56,3 @@ if player.location == carmen.location:
 
 print "You are now in " + player.location.name
 
-# def chooseatrail(thecity, listoftrails):
-#    for item in listoftrails:
-#        if thecity == item:
-#            return listoftrails.index(city)
-
