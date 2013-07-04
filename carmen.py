@@ -14,7 +14,7 @@ cities = {
 
 trails = { 
     "Bozeman trail" : ["Fort Laramie", "Virginia City"],
-    "Usual trail" : ["South Pass", {
+    "Usual trail" : ["Fort Laramie", "South Pass", {
         "Mormon trail" : ["Salt Lake City" , "Fort Hall"],
         "Gentile trail" : "Fort Hall"
         },
@@ -23,23 +23,28 @@ trails = {
 
 currentcity = "Fort Laramie"
 
-carmencity = cities[str(random.randrange(1,len(cities)))]
+# I'll be randomizing which city Carmen is in later.
+# carmencity = cities[str(random.randrange(1,len(cities)))]
+
+carmencity = "Portland"
 
 username = raw_input('What is your name? ')
 
 print "You are in " + currentcity + ", and you can go to Virginia City, Montana, or South Pass, Wyoming."
 
-choice = raw_input('Carmen Sandiego has stolen three wagon tongues and we must catch her! Which way to go? North (N) or west (W)? ')
+print "Carmen Sandiego has stolen a wagon tongue and we must catch her!"
+
+choice = raw_input('Which way to go? South Pass (SP) or Virginia City (VC)? ')
 
 followher = "You follow Carmen to "
 
 def choosepath(path):
     path = choice
     global currentcity
-    if path == 'N':
+    if path == 'VC':
         currentcity = cities['1']
         return followher + currentcity
-    if path == 'W':
+    if path == 'SP':
         currentcity = cities['2']
         return followher + currentcity
     else:
@@ -49,3 +54,5 @@ print choosepath(choice)
 
 if currentcity == carmencity:
     print "you win!"
+
+print "OK, now you are in " + currentcity + "."
