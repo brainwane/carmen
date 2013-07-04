@@ -35,7 +35,7 @@ player.name = raw_input('What is your name? ')
 
 print [x.name for x in player.location.dests]
 
-print carmen.name " has stolen a wagon tongue and we must catch her! Your choices are:"
+print carmen.name + " has stolen a wagon tongue and we must catch her! Your choices are:"
 for i,x in enumerate(player.location.dests):
     print x.name + " is choice #" + str(i+1)
 
@@ -46,8 +46,7 @@ def firstchoice(path):
     if path not in range(1, (len(player.location.dests)+1)):
         return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
     else:
-        path = player.location.dests[path]
-        player.location = path
+        player.location = player.location.dests[path-1]
         return followher + player.location.name
 
 print firstchoice(choice)
