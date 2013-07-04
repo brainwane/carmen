@@ -3,9 +3,15 @@ import math
 import sys
 import random
 
-# time to construct the "tree" of possibilities as a list of lists
 
-trails = [("Fort Laramie", "Virginia City"), ("Fort Laramie", "South Pass", ("Salt Lake City", "Fort Hall")), "Fort Hall", "Portland"]
+# __ metaclass __ = type # the book told me to do this - maybe it was wrong
+
+class City:
+    def __init__(self):
+        self.dests = ()
+
+
+# the "tree" of possibilities was a list of lists: (("Fort Laramie", "Virginia City"), ("Fort Laramie", "South Pass", "Salt Lake City", "Fort Hall"), "Portland")
 
 currentcity = "Fort Laramie"
 
@@ -51,5 +57,8 @@ if currentcity == trails[1][1]:
     print "You are on the right track! From here, the Mormon trail or the Gentile trail?"
 
 
-def chooseatrail(city, listoftrails):
-    
+def chooseatrail(thecity, listoftrails):
+    for item in listoftrails:
+        if thecity == item:
+            return listoftrails.index(city)
+
