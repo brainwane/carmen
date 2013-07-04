@@ -3,16 +3,9 @@ import math
 import sys
 import random
 
-# time to construct the "tree" of possibilities as a dictionary of lists
+# time to construct the "tree" of possibilities as a list of lists
 
-trails = { 
-    "Bozeman trail" : ["Fort Laramie", "Virginia City"],
-    "Usual trail" : ["Fort Laramie", "South Pass", {
-        "Mormon trail" : ["Salt Lake City" , "Fort Hall"],
-        "Gentile trail" : "Fort Hall"
-        },
-        "Portland"]
-    }
+trails = [("Fort Laramie", "Virginia City"), ("Fort Laramie", "South Pass", ("Salt Lake City", "Fort Hall")), "Fort Hall", "Portland"]
 
 currentcity = "Fort Laramie"
 
@@ -48,12 +41,15 @@ print firstchoice(choice)
 if currentcity == carmencity:
     print "you win!"
 
-if currentcity == trails["Bozeman trail"][1]:
+if currentcity == trails[0][1]:
     print "You are on the Bozeman trail. Wrong turn! No sign of Carmen here; time to head back."
-#    currentcity = "Fort Laramie"
-#    secondchance = raw_input('Which way to go? South Pass (SP) or Virginia City (VC)? ')
-#    print firstchoice(secondchance)
+    secondchance = raw_input('Which way to go? South Pass (SP) or Virginia City (VC)? ')
+    firstchoice(secondchance)
+    print firstchoice(secondchance)
 
-if currentcity == trails["Usual trail"][1]:
+if currentcity == trails[1][1]:
     print "You are on the right track! From here, the Mormon trail or the Gentile trail?"
 
+
+def chooseatrail(city, listoftrails):
+    
