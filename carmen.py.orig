@@ -14,14 +14,12 @@ class Person(object):
         self.name = name
         self.location = location
 
-ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "she had a lot of questions about the American Fur Company."),
-                             City("Virginia City", "she wanted to see the birthplace of Calamity Jane."),
-                             City("South Pass", "she said she was fixin' to cross the Continental Divide!"),
-                             City("Salt Lake City", "she said she was planning on having coffee with the Prophet... I didn't have the heart to tell her."),
-                             City("Fort Hall", "she asked about the Snake River country."),
-                             City("Portland", "she said she longed to see the future home of Open Source Bridge."))
-
-# Clue wit by Leonard. Thank you @leonardr.
+ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "Matthew Shepard"),
+                             City("Virginia City", "a city in Montana named after an eastern State"),
+                             City("South Pass", "a town named South you have to go north to get to"),
+                             City("Salt Lake City", "Brigham Young"), 
+                             City("Fort Hall", "Hilary Mantel"),
+                             City("Portland", "the home of Open Source Bridge"))
 
 ftl.dests = (vc, sp)
 vc.dests = (ftl,)
@@ -30,13 +28,13 @@ slc.dests = (fh,)
 fh.dests = (pdx,)
 
 player = Person("none", ftl)
-carmen = Person("Carmen Sandiego", random.choice((ftl, vc, sp, slc, fh, pdx)))
+carmen = Person("Carmen Sandiego", pdx)
 followher = "You follow Carmen to "
 
 player.name = raw_input('What is your name? ')
 
 print carmen.name + " has stolen a wagon tongue and we must catch her!"
-print "You are in " + player.location.name + " and, after some asking around, you have learned that " + carmen.location.clue
+print "You are in " + player.location.name + " and, after some asking around, you have learned that she sounded interested in " + carmen.location.clue + "."
 
 print "Your choices are:"
 
@@ -49,7 +47,6 @@ where2go()
 choice = raw_input('Which way to go? ')
 
 def choose(path):
-    # exception for if int(path) fails
     if int(path) not in range(1, (len(player.location.dests)+1)):
         return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
     else:
@@ -67,7 +64,6 @@ def wincondition():
 def latterchoices():
 	print player.name + ", you are now in " + player.location.name + " and you can head to:"
 	where2go()
-	print "You ask around about Carmen and learn that " + carmen.location.clue
 	choice = raw_input('OK, now which way? ')
 	print choose(choice)
 
