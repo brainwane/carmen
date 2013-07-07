@@ -38,26 +38,32 @@ def where2go():
     for i,x in enumerate(player.location.dests):
         print str(i+1) + ". "+ x.name
 
+def wincondition():
+    if player.location == carmen.location:
+        print "You found her in " + carmen.location.name + " so you win!"
+        sys.exit()
+
 def choose(path):
-    # exception for if int(path) fails
+    try:
+        int(path)
+    except ValueError:
+        print "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
+        return
     if int(path) not in range(1, (len(player.location.dests)+1)):
         return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
     else:
         path = int(path)
         player.location = player.location.dests[path-1]
+        wincondition()
+        carmen.location = random.choice(carmen.location.dests)
         return followher + player.location.name
-
-def wincondition():
-    if player.location == carmen.location:
-        print "You win!"
-        sys.exit()
 
 def playturn():
 	print player.name + ", you are now in " + player.location.name + " and you can head to:"
 	where2go()
 	print "You ask around about Carmen and learn that " + carmen.location.clue
 	choice = raw_input('OK, now which way will you go? ')
-	print choose(choice)
+	choose(choice)
 
 player.name = raw_input('What is your name? ')
 print "Okay, " + player.name + ", welcome to " + player.location.name + "."
@@ -65,6 +71,4 @@ print carmen.name + " has stolen a wagon tongue and we must catch her!"
 
 while player.location !=carmen.location:
     playturn()
-    wincondition()
-    carmen.location = random.choice(carmen.location.dests)
-    wincondition()
+
