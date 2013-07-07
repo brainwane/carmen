@@ -58,10 +58,25 @@ print choose(choice)
 
 if player.location == carmen.location:
     print "You win!"
+    sys.exit()
 
-print player.name + ", you are now in " + player.location.name + " and you can head to:"
-print where2go()
+def latterchoices():
+	print player.name + ", you are now in " + player.location.name + " and you can head to:"
+	print where2go()
+	choice = raw_input('OK, now which way? ')
+	print choose(choice)
 
-choice = raw_input('OK, now which way? ')
+latterchoices()
 
-print choose(choice)
+if player.location == carmen.location:
+    print "You win!"
+    sys.exit()
+
+latterchoices()
+
+if player.location == carmen.location:
+    print "You win!"
+    sys.exit()
+
+latterchoices()
+
