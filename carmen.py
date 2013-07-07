@@ -14,12 +14,14 @@ class Person(object):
         self.name = name
         self.location = location
 
-ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "Matthew Shepard"),
-                             City("Virginia City", "a city in Montana named after an eastern State"),
-                             City("South Pass", "a town named South you have to go north to get to"),
-                             City("Salt Lake City", "Brigham Young"), 
-                             City("Fort Hall", "Hilary Mantel"),
-                             City("Portland", "the home of Open Source Bridge"))
+ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "She had a lot of questions about the American Fur Company."),
+                             City("Virginia City", "She wanted to see the birthplace of Calamity Jane."),
+                             City("South Pass", "She said she was fixin' to cross the Continental Divide!"),
+                             City("Salt Lake City", "She said she was planning on having coffee with the Prophet... I didn't have the heart to tell her."),
+                             City("Fort Hall", "She asked about the Snake River country."),
+                             City("Portland", "She said she longed to see the future home of Open Source Bridge."))
+
+# Clue wit by Leonard. Thank you @leonardr.
 
 ftl.dests = (vc, sp)
 vc.dests = (ftl,)
