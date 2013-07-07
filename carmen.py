@@ -22,7 +22,7 @@ ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "Matthew Shepard"),
                              City("Portland", "the home of Open Source Bridge"))
 
 ftl.dests = (vc, sp)
-vc.dests = ()
+vc.dests = (ftl,)
 sp.dests = (slc, fh)
 slc.dests = (fh,)
 fh.dests = (pdx,)
@@ -42,7 +42,7 @@ def where2go():
     for i,x in enumerate(player.location.dests):
         print str(i+1) + ". "+ x.name
 
-print where2go()
+where2go()
 
 choice = raw_input('Which way to go? ')
 
@@ -56,27 +56,17 @@ def choose(path):
 
 print choose(choice)
 
-if player.location == carmen.location:
-    print "You win!"
-    sys.exit()
+def wincondition():
+    if player.location == carmen.location:
+        print "You win!"
+        sys.exit()
 
 def latterchoices():
 	print player.name + ", you are now in " + player.location.name + " and you can head to:"
-	print where2go()
+	where2go()
 	choice = raw_input('OK, now which way? ')
 	print choose(choice)
 
-latterchoices()
-
-if player.location == carmen.location:
-    print "You win!"
-    sys.exit()
-
-latterchoices()
-
-if player.location == carmen.location:
-    print "You win!"
-    sys.exit()
-
-latterchoices()
-
+while player.location !=carmen.location:
+    latterchoices()
+    wincondition()
