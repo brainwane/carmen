@@ -31,7 +31,7 @@ fh.dests = (sp, slc, pdx)
 pdx.dests = (fh,)
 
 player = Person("none", ftl)
-carmen = Person("Carmen Sandiego", random.choice((ftl, vc, sp, slc, fh, pdx)))
+carmen = Person("Carmen Sandiego", random.choice((vc, sp, slc, fh, pdx)))
 followher = "You follow Carmen to "
 
 def where2go():
