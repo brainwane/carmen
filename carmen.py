@@ -19,7 +19,7 @@ ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "she had a lot of questions ab
                              City("South Pass", "she said she was fixin' to cross the Continental Divide!"),
                              City("Salt Lake City", "she said she was planning on having coffee with the Prophet... I didn't have the heart to tell her."),
                              City("Fort Hall", "she asked about the Snake River country."),
-                             City("Portland", "she said she longed to see the future home of Open Source Bridge."))
+                             City("Portland", "she said she longed to see the future home of Open Source Bridge, the yearly conference by the Stumptown Syndicate."))
 
 # Clue wit by Leonard. Thank you @leonardr.
 
