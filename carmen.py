@@ -77,10 +77,10 @@ def playturn():
 	choose(choice)
 	wincondition()
 
-print "Where On The Oregon Trail is Carmen Sandiego?"
-player.name = raw_input('What is your name? ')
-print "Okay, " + player.name + ", welcome to " + player.location.name + "."
-print carmen.name + " has stolen a wagon tongue and we must catch her! Get ready for a chase and stay on your toes, because she is on the move!"
+print "You are now playing: Where On The Oregon Trail is Carmen Sandiego?"
+player.name = raw_input('Detective at keyboard, please identify yourself: ')
+print "Okay, " + player.name + ", your current rank is: Carpenter.  Welcome to " + player.location.name + "."
+print carmen.name + " has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase and stay on your toes, because she is on the move!"
 
 while player.location !=carmen.location:
     playturn()
