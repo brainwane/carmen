@@ -14,6 +14,12 @@ class Person(object):
         self.name = name
         self.location = location
 
+ind, sjo, cbl, fkn, chmr = (City("Independence", "she thought she'd stock up for a journey -- bullets, yokes of oxen, and whatnot."),
+                            City("Saint Joseph", "she had a headache and needed to find some baby aspirin."),
+                            City("Council Bluffs", "she knew that you can't beat City Hall, but thought another municipal body might back down more easily."),
+                            City("Fort Kearney", "she wanted to visit the easternmost point of the Platte River Valley's natural roadway."),
+                            City("Chimney Rock", "the tow-headed woman was tired of spelunking and wanted to try climbing."))
+
 ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "she had a lot of questions about the American Fur Company."),
                              City("Virginia City", "she wanted to see the birthplace of Calamity Jane."),
                              City("South Pass", "she said she was fixin' to cross the Continental Divide!"),
@@ -23,6 +29,11 @@ ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "she had a lot of questions ab
 
 # Clue wit by Leonard. Thank you @leonardr.
 
+ind.dests = (fkn,)
+sjo.dests = (fkn,)
+cbl.dests = (fkn,)
+fkn.dests = (ind, sjo, cbl, chmr)
+chmr.dests = (fkn, ftl)
 ftl.dests = (vc, sp)
 vc.dests = (ftl,)
 sp.dests = (ftl, slc, fh)
@@ -30,8 +41,8 @@ slc.dests = (sp, fh)
 fh.dests = (sp, slc, pdx)
 pdx.dests = (fh,)
 
-player = Person("none", ftl)
-carmen = Person("Carmen Sandiego", random.choice((vc, sp, slc, fh, pdx)))
+player = Person("none", ind)
+carmen = Person("Carmen Sandiego", random.choice((fkn, chmr, ftl, vc, sp, slc, fh, pdx)))
 
 def where2go():
     for i,x in enumerate(player.location.dests):
