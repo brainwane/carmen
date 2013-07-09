@@ -57,7 +57,8 @@ def choose(path):
     try:
         int(path)
     except ValueError:
-        print "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
+        print "That doesn't make sense, " + player.name + ", because it's not the number for one of your possible destinations."
+        print "So you stay in " + player.location.name + "."
         return
     if int(path) not in range(1, (len(player.location.dests)+1)):
         return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
@@ -78,7 +79,7 @@ def playturn():
 
 player.name = raw_input('What is your name? ')
 print "Okay, " + player.name + ", welcome to " + player.location.name + "."
-print carmen.name + " has stolen a wagon tongue and we must catch her!"
+print carmen.name + " has stolen a wagon tongue and we must catch her! Get ready for a chase and stay on your toes, because she is on the move!"
 
 while player.location !=carmen.location:
     playturn()
