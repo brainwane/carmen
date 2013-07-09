@@ -17,7 +17,7 @@ class Person(object):
 ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "she had a lot of questions about the American Fur Company."),
                              City("Virginia City", "she wanted to see the birthplace of Calamity Jane."),
                              City("South Pass", "she said she was fixin' to cross the Continental Divide!"),
-                             City("Salt Lake City", "she said she was planning on having coffee with the Prophet... I didn't have the heart to tell her."),
+                             City("Salt Lake City", "she said she was planning on having coffee with the Prophet... they didn't have the heart to tell her."),
                              City("Fort Hall", "she asked about the Snake River country."),
                              City("Portland", "she said she longed to see the future home of Open Source Bridge, the yearly conference by the Stumptown Syndicate."))
 
@@ -32,7 +32,6 @@ pdx.dests = (fh,)
 
 player = Person("none", ftl)
 carmen = Person("Carmen Sandiego", random.choice((vc, sp, slc, fh, pdx)))
-followher = "You follow Carmen to "
 
 def where2go():
     for i,x in enumerate(player.location.dests):
@@ -56,7 +55,7 @@ def choose(path):
         player.location = player.location.dests[path-1]
         wincondition()
         carmen.location = random.choice(carmen.location.dests)
-        return followher + player.location.name
+        return "You follow Carmen to " + player.location.name
 
 def playturn():
 	print player.name + ", you are now in " + player.location.name + " and you can head to:"
@@ -64,6 +63,7 @@ def playturn():
 	print "You ask around about Carmen and learn that " + carmen.location.clue
 	choice = raw_input('OK, now which way will you go? ')
 	choose(choice)
+	wincondition()
 
 player.name = raw_input('What is your name? ')
 print "Okay, " + player.name + ", welcome to " + player.location.name + "."
