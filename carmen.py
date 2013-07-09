@@ -77,6 +77,7 @@ def playturn():
 	choose(choice)
 	wincondition()
 
+print "Where On The Oregon Trail is Carmen Sandiego?"
 player.name = raw_input('What is your name? ')
 print "Okay, " + player.name + ", welcome to " + player.location.name + "."
 print carmen.name + " has stolen a wagon tongue and we must catch her! Get ready for a chase and stay on your toes, because she is on the move!"
