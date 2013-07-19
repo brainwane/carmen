@@ -92,7 +92,7 @@ def playturn():
 	choose(choice)
 	wincondition()
 
-print "You are now playing: Where On The Oregon Trail is Carmen Sandiego?"
+print "You are now playing: Where On The Oregon Trail is Carmen Sandiego? Copyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License. This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it     under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."
 player.name = raw_input('Detective at keyboard, please identify yourself: ')
 print "Okay, " + player.name + ", your current rank is: Carpenter.  Welcome to " + player.location.name + "."
 print carmen.name + " has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase and stay on your toes, because she is on the move!"
