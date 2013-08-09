@@ -29,11 +29,12 @@ class Person(object):
         self.name = name
         self.location = location
 
-ind, sjo, cbl, fkn, chmr = (City("Independence", "she thought she'd stock up for a journey -- bullets, yokes of oxen, and whatnot."),
-                            City("Saint Joseph", "she had a headache and needed to find some baby aspirin."),
-                            City("Council Bluffs", "she knew that you can't beat City Hall, but thought another municipal body might back down more easily."),
-                            City("Fort Kearney", "she wanted to visit the easternmost point of the Platte River Valley's natural roadway."),
-                            City("Chimney Rock", "the tow-headed woman was tired of spelunking and wanted to try climbing."))
+ind = City("Independence", "she thought she'd stock up for a journey -- bullets, yokes of oxen, and whatnot.")
+sjo = City("Saint Joseph", "she had a headache and needed to find some baby aspirin.")
+cbl = City("Council Bluffs", "she knew that you can't beat City Hall, but thought another municipal body might back down more easily.")
+fkn = City("Fort Kearney", "she wanted to visit the easternmost point of the Platte River Valley's natural roadway.")
+chmr = City("Chimney Rock", "the tow-headed woman was tired of spelunking and wanted to try climbing.")
+
 
 ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "she had a lot of questions about the American Fur Company."),
                              City("Virginia City", "she wanted to see the birthplace of Calamity Jane."),
