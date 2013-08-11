@@ -34,14 +34,12 @@ sjo = City("Saint Joseph", "she had a headache and needed to find some baby aspi
 cbl = City("Council Bluffs", "she knew that you can't beat City Hall, but thought another municipal body might back down more easily.")
 fkn = City("Fort Kearney", "she wanted to visit the easternmost point of the Platte River Valley's natural roadway.")
 chmr = City("Chimney Rock", "the tow-headed woman was tired of spelunking and wanted to try climbing.")
-
-
-ftl, vc, sp, slc, fh, pdx = (City("Fort Laramie", "she had a lot of questions about the American Fur Company."),
-                             City("Virginia City", "she wanted to see the birthplace of Calamity Jane."),
-                             City("South Pass", "she said she was fixin' to cross the Continental Divide!"),
-                             City("Salt Lake City", "she said she was planning on having coffee with the Prophet... they didn't have the heart to tell her."),
-                             City("Fort Hall", "she asked about the Snake River country."),
-                             City("Portland", "she said she longed to see the future home of Open Source Bridge, the yearly conference by the Stumptown Syndicate."))
+ftl = City("Fort Laramie", "she had a lot of questions about the American Fur Company.")
+vc = City("Virginia City", "she wanted to see the birthplace of Calamity Jane.")
+sp = City("South Pass", "she said she was fixin' to cross the Continental Divide!")
+slc = City("Salt Lake City", "she said she was planning on having coffee with the Prophet... they didn't have the heart to tell her.")
+fh = City("Fort Hall", "she asked about the Snake River country.")
+pdx = City("Portland", "she said she longed to see the future home of Open Source Bridge, the yearly conference by the Stumptown Syndicate.")
 
 # Clue wit by Leonard. Thank you @leonardr.
 
