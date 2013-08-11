@@ -74,10 +74,10 @@ def choose(path):
         print "That doesn't make sense, " + player.name + ", because it's not the number for one of your possible destinations."
         print "So you stay in " + player.location.name + "."
         return
-    if int(path) not in range(1, (len(player.location.dests)+1)):
+    path = int(path)
+    if path < 1 or path > (len(player.location.dests)+1):
         return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
     else:
-        path = int(path)
         player.location = player.location.dests[path-1]
         wincondition()
         carmen.location = random.choice(carmen.location.dests)
