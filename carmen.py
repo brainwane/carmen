@@ -98,4 +98,3 @@ print carmen.name + " has stolen a wagon tongue and Interpol has assigned you to
 
 while player.location !=carmen.location:
     playturn()
-
