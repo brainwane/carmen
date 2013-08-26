@@ -1,7 +1,7 @@
 TODO
 ====
 
-1. Instead of global variables like "carmen" & "player", think about having 1 controller method (self) that has all these variables as part of its state (never have a function acting on a variable that hasn't been passed as a parameter)
+1. Create "game" controller class that has the game functions as methods; instead of global variables like "carmen" & "player", the current-game object has those variables as part of its state (never have a function acting on a variable that hasn't been passed as a parameter)
 1. Better clues & better clueing of what you're supposed to do
 1. Additional villains and stolen items
 1. Add a conception of "time" so that it makes sense for the player to have to make a choice: take the time to visit multiple clue sources within one city, or potentially skip useful information to catch up to the villain faster
