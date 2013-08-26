@@ -43,20 +43,20 @@ pdx = City("Portland", "she said she longed to see the future home of Open Sourc
 
 # Clue wit by Leonard. Thank you @leonardr.
 
-ind.dests = (fkn,)
-sjo.dests = (fkn,)
-cbl.dests = (fkn,)
-fkn.dests = (ind, sjo, cbl, chmr)
-chmr.dests = (fkn, ftl)
-ftl.dests = (vc, sp)
-vc.dests = (ftl,)
-sp.dests = (ftl, slc, fh)
-slc.dests = (sp, fh)
-fh.dests = (sp, slc, pdx)
-pdx.dests = (fh,)
+ind.dests = [fkn]
+sjo.dests = [fkn]
+cbl.dests = [fkn]
+fkn.dests = [ind, sjo, cbl, chmr]
+chmr.dests = [fkn, ftl]
+ftl.dests = [vc, sp]
+vc.dests = [ftl]
+sp.dests = [ftl, slc, fh]
+slc.dests = [sp, fh]
+fh.dests = [sp, slc, pdx]
+pdx.dests = [fh]
 
 player = Person("none", ind)
-carmen = Person("Carmen Sandiego", random.choice((fkn, chmr, ftl, vc, sp, slc, fh, pdx)))
+carmen = Person("Carmen Sandiego", random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx]))
 
 def where2go():
     for i,x in enumerate(player.location.dests):
@@ -75,7 +75,7 @@ def choose(path):
         print "So you stay in " + player.location.name + "."
         return
     path = int(path)
-    if path < 1 or path > (len(player.location.dests)+1):
+    if path < 1 or path > (len(player.location.dests)):
         return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
     else:
         player.location = player.location.dests[path-1]
