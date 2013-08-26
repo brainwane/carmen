@@ -60,41 +60,41 @@ carmen = Person("Carmen Sandiego", random.choice([fkn, chmr, ftl, vc, sp, slc, f
 
 def where2go():
     for i,x in enumerate(player.location.dests):
-        print str(i+1) + ". "+ x.name
+        print "%d. %s" % (i+1, x.name)
 
 def wincondition():
     if player.location == carmen.location:
-        print "You found her in " + carmen.location.name + " so you win!"
+        print "You found her in %s so you win!" % carmen.location.name
         sys.exit()
 
 def choose(path):
     try:
         int(path)
     except ValueError:
-        print "That doesn't make sense, " + player.name + ", because it's not the number for one of your possible destinations."
-        print "So you stay in " + player.location.name + "."
+        print "That doesn't make sense, %s, because it's not the number for one of your possible destinations." % player.name
+        print "So you stay in %s." % player.location.name
         return
     path = int(path)
     if path < 1 or path > (len(player.location.dests)):
-        return "That doesn't make sense, " + player.name + ", so you stay in " + player.location.name + "."
+        return "That doesn't make sense, %s, so you stay in %s." % (player.name, player.location.name)
     else:
         player.location = player.location.dests[path-1]
         wincondition()
         carmen.location = random.choice(carmen.location.dests)
-        return "You follow Carmen to " + player.location.name
+        return "You follow Carmen to %s." % player.location.name
 
 def playturn():
-	print player.name + ", you are now in " + player.location.name + " and you can head to:"
+	print "%s, you are now in %s and you can head to:" % (player.name, player.location.name)
 	where2go()
-	print "You ask around about Carmen and learn that " + carmen.location.clue
+	print "You ask around about Carmen and learn that %s" % carmen.location.clue
 	choice = raw_input('OK, now which way will you go? Choose a number. ')
 	choose(choice)
 	wincondition()
 
 print "You are now playing: Where On The Oregon Trail is Carmen Sandiego? Copyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License. This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it     under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."
 player.name = raw_input('Detective at keyboard, please identify yourself: ')
-print "Okay, " + player.name + ", your current rank is: Carpenter.  Welcome to " + player.location.name + "."
-print carmen.name + " has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!"
+print "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (player.name, player.location.name)
+print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % carmen.name
 
 while player.location !=carmen.location:
     playturn()
