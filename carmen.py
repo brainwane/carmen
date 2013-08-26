@@ -17,6 +17,7 @@
 
 import sys
 import random
+import textwrap
 
 class City(object):
     def __init__(self, name, clue):
@@ -58,6 +59,8 @@ pdx.dests = [fh]
 player = Person("none", ind)
 carmen = Person("Carmen Sandiego", random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx]))
 
+gpl = "You are now playing: \nWhere On The Oregon Trail is Carmen Sandiego? \nCopyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License. \nThis program comes with ABSOLUTELY NO WARRANTY. \nThis is free software, and you are welcome to redistribute it under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."
+
 def where2go():
     for i,x in enumerate(player.location.dests):
         print "%d. %s" % (i+1, x.name)
@@ -91,7 +94,7 @@ def playturn():
 	choose(choice)
 	wincondition()
 
-print "You are now playing: Where On The Oregon Trail is Carmen Sandiego? Copyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License. This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it     under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."
+print textwrap.fill(gpl,70,replace_whitespace=False)
 player.name = raw_input('Detective at keyboard, please identify yourself: ')
 print "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (player.name, player.location.name)
 print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % carmen.name
