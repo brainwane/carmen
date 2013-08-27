@@ -1,7 +1,7 @@
 TODO
 ====
 
-1. After winning, ask "play again?" If yes, start new game object with same player object but restarted location; if no, sys.exit
+1. Win condition: "You found her in %s so you win!" % currentsession.carmen.location.name .  Then ask "play again?" If yes, start new game object with same player object but restarted location; if no, sys.exit
 1. Text-wrap more of the exposition
 1. Better clues & better clueing of what you're supposed to do
 1. Additional villains and stolen items
