@@ -21,7 +21,7 @@ import textwrap
 
 class City(object):
     def __init__(self, name, clue):
-        self.dests = ()
+        self.dests 
         self.name = name
         self.clue = clue
 
@@ -56,48 +56,50 @@ slc.dests = [sp, fh]
 fh.dests = [sp, slc, pdx]
 pdx.dests = [fh]
 
-player = Person("none", ind)
-carmen = Person("Carmen Sandiego", random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx]))
+class Game():
+    def __init__(self, player, carmen):
+        self.player = player
+        self.carmen = carmen
+        
+    def wincondition(self):
+        return self.player.location == self.carmen.location
+
+    def playturn(self):
+        print "%s, you are now in %s and you can head to:" % (self.player.name, self.player.location.name)
+        self.where2go()
+        print "You ask around about Carmen and learn that %s" % self.carmen.location.clue
+        choice = raw_input('OK, now which way will you go? Choose a number. ')
+        self.choose(choice)
+        self.wincondition()
+
+    def where2go(self):
+        for i,x in enumerate(self.player.location.dests):
+            print "%d. %s" % (i+1, x.name)
+
+    def choose(self, path):
+        try:
+            int(path)
+        except ValueError:
+            print "That doesn't make sense, %s, because it's not the number for one of your possible destinations." % self.player.name
+            print "So you stay in %s." % self.player.location.name
+            return
+        path = int(path)
+        if path < 1 or path > (len(self.player.location.dests)):
+            return "That doesn't make sense, %s, so you stay in %s." % (self.player.name, self.player.location.name)
+        else:
+            self.player.location = self.player.location.dests[path-1]
+            if self.wincondition(): sys.exit()
+            self.carmen.location = random.choice(self.carmen.location.dests)
+            return "You follow Carmen to %s." % self.player.location.name
+
+currentsession = Game(Person("none", ind), Person("Carmen Sandiego", random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])))
 
 gpl = "You are now playing: \nWhere On The Oregon Trail is Carmen Sandiego? \nCopyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License. \nThis program comes with ABSOLUTELY NO WARRANTY. \nThis is free software, and you are welcome to redistribute it under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."
 
-def where2go():
-    for i,x in enumerate(player.location.dests):
-        print "%d. %s" % (i+1, x.name)
-
-def wincondition():
-    if player.location == carmen.location:
-        print "You found her in %s so you win!" % carmen.location.name
-        sys.exit()
-
-def choose(path):
-    try:
-        int(path)
-    except ValueError:
-        print "That doesn't make sense, %s, because it's not the number for one of your possible destinations." % player.name
-        print "So you stay in %s." % player.location.name
-        return
-    path = int(path)
-    if path < 1 or path > (len(player.location.dests)):
-        return "That doesn't make sense, %s, so you stay in %s." % (player.name, player.location.name)
-    else:
-        player.location = player.location.dests[path-1]
-        wincondition()
-        carmen.location = random.choice(carmen.location.dests)
-        return "You follow Carmen to %s." % player.location.name
-
-def playturn():
-	print "%s, you are now in %s and you can head to:" % (player.name, player.location.name)
-	where2go()
-	print "You ask around about Carmen and learn that %s" % carmen.location.clue
-	choice = raw_input('OK, now which way will you go? Choose a number. ')
-	choose(choice)
-	wincondition()
-
 print textwrap.fill(gpl,70,replace_whitespace=False)
-player.name = raw_input('Detective at keyboard, please identify yourself: ')
-print "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (player.name, player.location.name)
-print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % carmen.name
+currentsession.player.name = raw_input('Detective at keyboard, please identify yourself: ')
+print "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
+print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.carmen.name
 
-while player.location !=carmen.location:
-    playturn()
+while currentsession.player.location != currentsession.carmen.location:
+    currentsession.playturn()
