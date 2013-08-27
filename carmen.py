@@ -21,7 +21,7 @@ import textwrap
 
 class City(object):
     def __init__(self, name, clue):
-        self.dests 
+        self.dests = ()
         self.name = name
         self.clue = clue
 
