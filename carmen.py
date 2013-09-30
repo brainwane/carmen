@@ -74,11 +74,11 @@ class Game():
     
     def wingame(self):
 		print "You found her in %s so you win!" % currentsession.carmen.location.name
-		playagain=raw_input('Would you like to play again? Y/N:')
+		playagain=raw_input('Would you like to play again? Y/N: ')
 		if playagain == "N":
 			sys.exit()
 		else:
-			self.player.location = random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])
+			self.player.location = ind
 			self.carmen.location = random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])
 			print "Get ready for a new game!"
 			
