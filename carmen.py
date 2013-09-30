@@ -98,7 +98,8 @@ gpl = "You are now playing: \nWhere On The Oregon Trail is Carmen Sandiego? \nCo
 
 print textwrap.fill(gpl,70,replace_whitespace=False)
 currentsession.player.name = raw_input('Detective at keyboard, please identify yourself: ')
-print "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
+currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
+print textwrap.fill(currentrank,70,replace_whitespace=False)
 print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.carmen.name
 
 while currentsession.player.location != currentsession.carmen.location:
