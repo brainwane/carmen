@@ -71,7 +71,17 @@ class Game():
         choice = raw_input('OK, now which way will you go? Choose a number. ')
         self.choose(choice)
         self.wincondition()
-
+    
+    def wingame(self):
+		print "You found her in %s so you win!" % currentsession.carmen.location.name
+		playagain=raw_input('Would you like to play again? Y/N:')
+		if playagain == "N":
+			sys.exit()
+		else:
+			self.player.location = random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])
+			self.carmen.location = random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])
+			print "Get ready for a new game!"
+			
     def where2go(self):
         for i,x in enumerate(self.player.location.dests):
             print "%d. %s" % (i+1, x.name)
@@ -88,7 +98,7 @@ class Game():
             return "That doesn't make sense, %s, so you stay in %s." % (self.player.name, self.player.location.name)
         else:
             self.player.location = self.player.location.dests[path-1]
-            if self.wincondition(): sys.exit()
+            if self.wincondition(): self.wingame()
             self.carmen.location = random.choice(self.carmen.location.dests)
             return "You follow Carmen to %s." % self.player.location.name
 
@@ -102,5 +112,5 @@ currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (cu
 print textwrap.fill(currentrank,70,replace_whitespace=False)
 print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.carmen.name
 
-while currentsession.player.location != currentsession.carmen.location:
+while True:
     currentsession.playturn()
