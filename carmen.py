@@ -25,25 +25,20 @@ class City(object):
         self.name = n
         self.clue = c
 
-class Person(object):
-    def __init__(self, n, l):
-        self.name = n
-        self.location = l
-
-class Villain(Person):
+class Villain(object):
     def __init__(self):
         self.name = random.choice(["Carmen", "Waldo"])
         self.location = random.choice([fkn, ind, fh])
 
-class Player(Person):
-    def __init__(self, name):
+class Hero(object):
+    def __init__(self):
         self.location = ind
         self.name = raw_input("What's your name? ")
 
 class Game():
-    def __init__(self, player, carmen):
-        self.player = player
-        self.carmen = carmen
+    def __init__(self):
+        self.player = Hero()
+        self.carmen = Villain()
         
     def wincondition(self):
         return self.player.location == self.carmen.location
@@ -86,7 +81,6 @@ class Game():
             self.carmen.location = random.choice(self.carmen.location.dests)
             return "You follow Carmen to %s." % self.player.location.name
 
-
 ind = City("Independence", "she thought she'd stock up for a journey -- bullets, yokes of oxen, and whatnot.")
 sjo = City("Saint Joseph", "she had a headache and needed to find some baby aspirin.")
 cbl = City("Council Bluffs", "she knew that you can't beat City Hall, but thought another municipal body might back down more easily.")
@@ -113,8 +107,6 @@ slc.dests = [sp, fh]
 fh.dests = [sp, slc, pdx]
 pdx.dests = [fh]
 
-currentsession = Game(Person("none", ind), Person("Carmen Sandiego", random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])))
-
 gpl = """You are now playing: 
 Where On The Oregon Trail is Carmen Sandiego?
 Copyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License.
@@ -122,7 +114,7 @@ This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."""
 
 print gpl
-currentsession.player.name = raw_input('Detective at keyboard, please identify yourself: ')
+currentsession = Game()
 currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
 print textwrap.fill(currentrank,70,replace_whitespace=False)
 print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.carmen.name
