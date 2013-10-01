@@ -20,41 +20,25 @@ import random
 import textwrap
 
 class City(object):
-    def __init__(self, name, clue):
-        self.dests = ()
-        self.name = name
-        self.clue = clue
+    def __init__(self, n, c):
+        self.dests = []
+        self.name = n
+        self.clue = c
 
 class Person(object):
-    def __init__(self, name, location):
-        self.name = name
-        self.location = location
+    def __init__(self, n, l):
+        self.name = n
+        self.location = l
 
-ind = City("Independence", "she thought she'd stock up for a journey -- bullets, yokes of oxen, and whatnot.")
-sjo = City("Saint Joseph", "she had a headache and needed to find some baby aspirin.")
-cbl = City("Council Bluffs", "she knew that you can't beat City Hall, but thought another municipal body might back down more easily.")
-fkn = City("Fort Kearney", "she wanted to visit the easternmost point of the Platte River Valley's natural roadway.")
-chmr = City("Chimney Rock", "the tow-headed woman was tired of spelunking and wanted to try climbing.")
-ftl = City("Fort Laramie", "she had a lot of questions about the American Fur Company.")
-vc = City("Virginia City", "she wanted to see the birthplace of Calamity Jane.")
-sp = City("South Pass", "she said she was fixin' to cross the Continental Divide!")
-slc = City("Salt Lake City", "she said she was planning on having coffee with the Prophet... they didn't have the heart to tell her.")
-fh = City("Fort Hall", "she asked about the Snake River country.")
-pdx = City("Portland", "she said she longed to see the future home of Open Source Bridge, the yearly conference by the Stumptown Syndicate.")
+class Villain(Person):
+    def __init__(self):
+        self.name = random.choice(["Carmen", "Waldo"])
+        self.location = random.choice([fkn, ind, fh])
 
-# Clue wit by Leonard. Thank you @leonardr.
-
-ind.dests = [fkn]
-sjo.dests = [fkn]
-cbl.dests = [fkn]
-fkn.dests = [ind, sjo, cbl, chmr]
-chmr.dests = [fkn, ftl]
-ftl.dests = [vc, sp]
-vc.dests = [ftl]
-sp.dests = [ftl, slc, fh]
-slc.dests = [sp, fh]
-fh.dests = [sp, slc, pdx]
-pdx.dests = [fh]
+class Player(Person):
+    def __init__(self, name):
+        self.location = ind
+        self.name = raw_input("What's your name? ")
 
 class Game():
     def __init__(self, player, carmen):
@@ -102,11 +86,42 @@ class Game():
             self.carmen.location = random.choice(self.carmen.location.dests)
             return "You follow Carmen to %s." % self.player.location.name
 
+
+ind = City("Independence", "she thought she'd stock up for a journey -- bullets, yokes of oxen, and whatnot.")
+sjo = City("Saint Joseph", "she had a headache and needed to find some baby aspirin.")
+cbl = City("Council Bluffs", "she knew that you can't beat City Hall, but thought another municipal body might back down more easily.")
+fkn = City("Fort Kearney", "she wanted to visit the easternmost point of the Platte River Valley's natural roadway.")
+chmr = City("Chimney Rock", "the tow-headed woman was tired of spelunking and wanted to try climbing.")
+ftl = City("Fort Laramie", "she had a lot of questions about the American Fur Company.")
+vc = City("Virginia City", "she wanted to see the birthplace of Calamity Jane.")
+sp = City("South Pass", "she said she was fixin' to cross the Continental Divide!")
+slc = City("Salt Lake City", "she said she was planning on having coffee with the Prophet... they didn't have the heart to tell her.")
+fh = City("Fort Hall", "she asked about the Snake River country.")
+pdx = City("Portland", "she said she longed to see the future home of Open Source Bridge, the yearly conference by the Stumptown Syndicate.")
+
+# Clue wit by Leonard. Thank you @leonardr.
+
+ind.dests = [fkn]
+sjo.dests = [fkn]
+cbl.dests = [fkn]
+fkn.dests = [ind, sjo, cbl, chmr]
+chmr.dests = [fkn, ftl]
+ftl.dests = [vc, sp]
+vc.dests = [ftl]
+sp.dests = [ftl, slc, fh]
+slc.dests = [sp, fh]
+fh.dests = [sp, slc, pdx]
+pdx.dests = [fh]
+
 currentsession = Game(Person("none", ind), Person("Carmen Sandiego", random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])))
 
-gpl = "You are now playing: \nWhere On The Oregon Trail is Carmen Sandiego? \nCopyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License. \nThis program comes with ABSOLUTELY NO WARRANTY. \nThis is free software, and you are welcome to redistribute it under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."
+gpl = """You are now playing: 
+Where On The Oregon Trail is Carmen Sandiego?
+Copyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public License.
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."""
 
-print textwrap.fill(gpl,70,replace_whitespace=False)
+print gpl
 currentsession.player.name = raw_input('Detective at keyboard, please identify yourself: ')
 currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
 print textwrap.fill(currentrank,70,replace_whitespace=False)
