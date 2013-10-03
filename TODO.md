@@ -1,10 +1,10 @@
 TODO
 ====
 
+1. Separate presentation and logic (e.g., don't print in any of the choice steps)
 1. Text-wrap more of the exposition
 1. Better clues & better clueing of what you're supposed to do
 1. Additional stolen items
-1. Separate presentation and logic (e.g., don't print in any of the choice steps)
 1. Allow for different villain gender - perhaps look at Danielle Sucher's regendering Chrome plugin for ideas
 1. Maybe use a graph database for the cities -- or a dict?
 1. Add difficulty levels - eventually initiate player in a non-Independence city
