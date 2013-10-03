@@ -3,7 +3,6 @@ TODO
 
 1. Text-wrap more of the exposition
 1. Better clues & better clueing of what you're supposed to do
-1. Allow "n" to quit
 1. Additional stolen items
 1. Separate presentation and logic (e.g., don't print in any of the choice steps)
 1. Allow for different villain gender - perhaps look at Danielle Sucher's regendering Chrome plugin for ideas
