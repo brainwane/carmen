@@ -27,38 +27,38 @@ class City(object):
 
 class Villain(object):
     def __init__(self):
-        self.name = random.choice(["Carmen", "Waldo"])
-        self.location = random.choice([fkn, ind, fh])
+        self.name = random.choice(["Carmen", "Waldo", "Edward Snowden", "Lyra"])
+        self.location = random.choice([fkn, chmr, ftl])
 
 class Hero(object):
     def __init__(self):
         self.location = ind
-        self.name = raw_input("What's your name? ")
+        self.name = raw_input("Detective at keyboard, identify yourself: ")
 
 class Game():
     def __init__(self):
         self.player = Hero()
-        self.carmen = Villain()
+        self.nemesis = Villain()
         
     def wincondition(self):
-        return self.player.location == self.carmen.location
+        return self.player.location == self.nemesis.location
 
     def playturn(self):
         print "%s, you are now in %s and you can head to:" % (self.player.name, self.player.location.name)
         self.where2go()
-        print "You ask around about Carmen and learn that %s" % self.carmen.location.clue
+        print "You ask around about %s and learn that %s" % (self.nemesis.name, self.nemesis.location.clue)
         choice = raw_input('OK, now which way will you go? Choose a number. ')
         self.choose(choice)
         self.wincondition()
     
     def wingame(self):
-		print "You found her in %s so you win!" % currentsession.carmen.location.name
+		print "You found her in %s so you win!" % currentsession.nemesis.location.name
 		playagain=raw_input('Would you like to play again? Y/N: ')
 		if playagain == "N":
 			sys.exit()
 		else:
 			self.player.location = ind
-			self.carmen.location = random.choice([fkn, chmr, ftl, vc, sp, slc, fh, pdx])
+			self.nemesis = Villain()
 			print "Get ready for a new game!"
 			
     def where2go(self):
@@ -78,8 +78,8 @@ class Game():
         else:
             self.player.location = self.player.location.dests[path-1]
             if self.wincondition(): self.wingame()
-            self.carmen.location = random.choice(self.carmen.location.dests)
-            return "You follow Carmen to %s." % self.player.location.name
+            self.nemesis.location = random.choice(self.nemesis.location.dests)
+            return "You follow %s to %s." % (self.nemesis.name, self.player.location.name)
 
 ind = City("Independence", "she thought she'd stock up for a journey -- bullets, yokes of oxen, and whatnot.")
 sjo = City("Saint Joseph", "she had a headache and needed to find some baby aspirin.")
@@ -117,7 +117,7 @@ print gpl
 currentsession = Game()
 currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
 print textwrap.fill(currentrank,70,replace_whitespace=False)
-print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.carmen.name
+print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.nemesis.name
 
 while True:
     currentsession.playturn()
