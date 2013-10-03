@@ -54,7 +54,7 @@ class Game():
     def wingame(self):
 		print "You found her in %s so you win!" % currentsession.nemesis.location.name
 		playagain=raw_input('Would you like to play again? Y/N: ')
-		if playagain == "N" or "n":
+		if playagain == ("N" or "n"):
 			sys.exit()
 		else:
 			self.player.location = ind
