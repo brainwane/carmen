@@ -12,5 +12,5 @@ TODO
 1. Add difficulty levels - eventually initiate player in a non-Independence city
 1. Figure out if I can match wordwrapping to size of player's terminal?
 1. Change lists of destinations to SETS?!
-1. Allow for different villain gender
+1. Allow for different villain gender - perhaps look at Danielle Sucher's regendering Chrome plugin for ideas
 1. Allow "n" to quit
