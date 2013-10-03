@@ -19,6 +19,9 @@ import sys
 import random
 import textwrap
 
+def anykey():
+    x = raw_input("Press Return to continue. ") + "a"
+
 class City(object):
     def __init__(self, n, c):
         self.dests = []
@@ -46,6 +49,7 @@ class Game():
     def playturn(self):
         print "%s, you are now in %s and you can head to:" % (self.player.name, self.player.location.name)
         self.where2go()
+        anykey()
         print "You ask around about %s and learn that %s" % (self.nemesis.name, self.nemesis.location.clue)
         choice = raw_input('OK, now which way will you go? Choose a number. ')
         self.choose(choice)
@@ -54,12 +58,13 @@ class Game():
     def wingame(self):
 		print "You found her in %s so you win!" % currentsession.nemesis.location.name
 		playagain=raw_input('Would you like to play again? Y/N: ')
-		if playagain == ("N" or "n"):
+		if (playagain == "N") or (playagain == "n"):
 			sys.exit()
 		else:
 			self.player.location = ind
 			self.nemesis = Villain()
 			print "Get ready for a new game!"
+                        anykey()
 			
     def where2go(self):
         for i,x in enumerate(self.player.location.dests):
@@ -116,7 +121,9 @@ This is free software, and you are welcome to redistribute it under certain cond
 print gpl
 currentsession = Game()
 currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
+anykey()
 print textwrap.fill(currentrank,70,replace_whitespace=False)
+anykey()
 print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.nemesis.name
 
 while True:
