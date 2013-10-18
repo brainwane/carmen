@@ -132,6 +132,14 @@ def test_bidirectionalpaths():
 
 test_bidirectionalpaths()
 
+def test_pathfinding():
+    # try to get ind-fkn-ftl-sp-slc-fh-pdx
+    # FIXME: does not work yet due to syntax error
+    try:
+        map(lambda x,y:assert y in x.dests,[[ind,fkn], [fkn,ftl], [ftl,sp], [sp,slc], [slc,fh], [fh,pdx]])
+    except AssertionError:
+        print "whoops!",y,"not in the destination list for",x
+
 # would be good to do pathfinding
 
 gpl = """You are now playing: 
