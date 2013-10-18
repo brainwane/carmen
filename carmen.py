@@ -71,12 +71,11 @@ class Game():
 
     def choose(self, path):
         try:
-            int(path)
+            path = int(path)
         except ValueError:
             print "That doesn't make sense, %s, because it's not the number for one of your possible destinations." % self.player.name
             print "So you stay in %s." % self.player.location.name
             return
-        path = int(path)
         if path < 1 or path > (len(self.player.location.dests)):
             return "That doesn't make sense, %s, so you stay in %s." % (self.player.name, self.player.location.name)
         else:
