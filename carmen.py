@@ -130,12 +130,14 @@ Copyright (C) 2013 Sumana Harihareswara and licensed under the GNU Public Licens
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it under certain conditions; see https://www.gnu.org/licenses/gpl.txt for details."""
 
-print gpl
-currentsession = Game()
-currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
-print textwrap.fill(currentrank,70,replace_whitespace=False)
-anykey()
-print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.nemesis.name
+if __name__=="__main__":
+    print gpl
+    currentsession = Game()
+    currentrank = "Okay, %s, your current rank is: Carpenter.  Welcome to %s." % (currentsession.player.name, currentsession.player.location.name)
+    print textwrap.fill(currentrank,70,replace_whitespace=False)
+    assert currentsession.nemesis != currentsession.player
+    anykey()
+    print "%s has stolen a wagon tongue and Interpol has assigned you to catch her! Get ready for a chase!" % currentsession.nemesis.name
 
-while True:
-    currentsession.playturn()
+    while True:
+         currentsession.playturn()
