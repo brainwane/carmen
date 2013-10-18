@@ -15,6 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+A silly game in Python. See the README.
+"""
+
 import sys
 import random
 import textwrap
@@ -24,6 +28,7 @@ def anykey():
     x = raw_input("Press Return to continue. ") + "a"
 
 class City(object):
+    """Each City has a name, a set of destinations one step away, and a clue."""
     def __init__(self, n, c):
         self.dests = []
         self.name = n
@@ -32,7 +37,7 @@ class City(object):
 class Villain(object):
     def __init__(self):
         self.name = random.choice(["Carmen", "Waldo", "Edward Snowden", "Lyra"])
-        self.location = random.choice([fkn, chmr, ftl])
+        self.location = random.choice([cbl, chmr, ftl])
 
 class Hero(object):
     def __init__(self):
@@ -45,6 +50,7 @@ class Game():
         self.nemesis = Villain()
         
     def wincondition(self):
+        """The player wins when s/he is in the same City as the nemesis."""
         return self.player.location == self.nemesis.location
 
     def playturn(self):
