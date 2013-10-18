@@ -102,14 +102,28 @@ pdx = City("Portland", "she said she longed to see the future home of Open Sourc
 ind.dests = [fkn]
 sjo.dests = [fkn]
 cbl.dests = [fkn]
-fkn.dests = [ind, sjo, cbl, chmr]
-chmr.dests = [fkn, ftl]
-ftl.dests = [vc, sp]
-vc.dests = [ftl]
-sp.dests = [ftl, slc, fh]
+fkn.dests = [cbl, ind, ftl, sjo, vc, chmr]
+chmr.dests = [fkn]
+ftl.dests = [vc, sp, fkn]
+vc.dests = [ftl, fkn]
+sp.dests = [fh, ftl, slc]
 slc.dests = [sp, fh]
-fh.dests = [sp, slc, pdx]
+fh.dests = [sp, pdx, slc]
 pdx.dests = [fh]
+
+def test_bidirectionalpaths():
+    for city in [ind, sjo, cbl, fkn, chmr, ftl, vc, sp, slc, fh, pdx]:
+        for dest in city.dests:
+            try:
+                assert city in dest.dests
+            except AssertionError:
+                print "bidirectional fail! City" , city.name , "was not in" , dest.name , "destinations."
+                dest.dests.append(city)
+                print "fixed it!" , city.name , "now in destinations for" , dest.name , "in this list:", map(lambda x: x.name,dest.dests)
+
+test_bidirectionalpaths()
+
+# would be good to do pathfinding
 
 gpl = """You are now playing: 
 Where On The Oregon Trail is Carmen Sandiego?
