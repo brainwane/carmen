@@ -18,6 +18,7 @@
 import sys
 import random
 import textwrap
+import mock
 
 def anykey():
     x = raw_input("Press Return to continue. ") + "a"
