@@ -48,6 +48,9 @@ class Game():
     def __init__(self):
         self.player = Hero()
         self.nemesis = Villain()
+
+    def __repr__(self):
+        return """A session of the game, with a hero and villain set up with names and locations."""
         
     def wincondition(self):
         """The player wins when s/he is in the same City as the nemesis."""
